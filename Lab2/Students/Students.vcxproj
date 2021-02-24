@@ -139,9 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="globalfunctions.h" />
     <ClInclude Include="students.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="globalfunctions.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="students.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
