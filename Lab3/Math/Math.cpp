@@ -45,9 +45,8 @@ int Math::Add(int count, ...) {
 }
 
 char* Math::Add(const char* x, const char* y) {
-	char* result = new char;
-	strcpy(result, x);
-	strcat(result, y);
+	int suma = (int)x + (int)y;
+	char* result = (char*)suma;
 	return result;
 }
 

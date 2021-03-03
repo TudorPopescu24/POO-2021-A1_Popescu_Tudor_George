@@ -14,7 +14,7 @@ int main() {
     cout << m.Mul(2.5, 13.6) << '\n';
     cout << m.Mul(1.7, 2.15, 5.9) << '\n';
     cout << m.Add(5, 10, 20, 30, 40, 50) << '\n';
-    cout << m.Add("Hello, ", "World!") << '\n';
+    cout << m.Add(234, 560) << '\n';
 
     return 0;
 }
