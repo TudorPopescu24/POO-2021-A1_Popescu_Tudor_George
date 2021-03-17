@@ -29,5 +29,12 @@ int main() {
 	Number n5("734", 8);
 	cout << (n4 == n5) << endl;
 	cout << (n4 == n2) << endl;
-	return 0;
+	Number n6 = 12345;
+	n6.Print();
+	n2 = 1234;
+	n2.Print();
+	n3 = "123456";
+	n3.Print();
+	/*n4--;
+	n4.Print(); */
 }
