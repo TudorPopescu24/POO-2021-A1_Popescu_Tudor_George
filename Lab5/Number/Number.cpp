@@ -5,6 +5,18 @@
 
 using namespace std;
 
+Number::Number(const char* value, int base)
+{
+	this->value = (char*)value;
+	this->base = base;
+}
+
+Number::Number(const Number& n)
+{
+	this->value = n.value;
+	this->base = n.base;
+}
+
 int truevalue(char c) {
 	if (c >= '0' && c <= '9')
 		return (int)(c - '0');
@@ -40,12 +52,6 @@ char* NewBase(int number, int base) {
 	return newnumber;
 }
 
-Number::Number(const char* value, int base)
-{
-	this->value = (char*)value;
-	this->base = base;
-}
-
 void Number::SwitchBase(int newBase)
 {
 	this->value = NewBase(Base10(this->value, this->base), newBase);
@@ -65,4 +71,46 @@ int Number::GetDigitsCount()
 int Number::GetBase()
 {
 	return this->base;
+}
+
+Number& operator+(const Number& i, const Number& j)
+{
+	int maxbase, suma;
+	if (i.base > j.base) maxbase = i.base;
+	else maxbase = j.base;
+	suma = Base10(i.value, i.base) + Base10(j.value, j.base);
+	Number result(NewBase(suma, maxbase), maxbase);
+	return result;
+}
+
+Number& operator-(const Number& i, const Number& j)
+{
+	int maxbase, diferenta;
+	if (i.base > j.base) maxbase = i.base;
+	else maxbase = j.base;
+	diferenta = Base10(i.value, i.base) + Base10(j.value, j.base);
+	Number result(NewBase(diferenta, maxbase), maxbase);
+	return result;
+}
+
+Number& Number::operator-()
+{
+	if (value[0] == '-')
+		strcpy(value, value + 1);
+	else {
+		strcpy(value + 1, value);
+		value[0] = '-';
+	}
+	return (*this);
+}
+
+char& Number::operator[](int index)
+{
+	return value[index];
+}
+
+bool Number::operator==(const Number& i)
+{
+	if ((value == i.value) && (base == i.base)) return true;
+	return false;
 }

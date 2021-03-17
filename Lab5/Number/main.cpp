@@ -16,5 +16,18 @@ int main() {
 	n3.Print();
 	cout << n3.GetDigitsCount() << endl;
 	cout << n3.GetBase() << endl;
+	n3 = n1 + n2;
+	n3.Print();
+	n1 = n3 - n2;
+	n1.Print();
+	n2 = -n1;
+	n2.Print();
+	n2 = -n2;
+	n2.Print();
+	cout << n2[1] << endl;
+	Number n4("734", 8);
+	Number n5("734", 8);
+	cout << (n4 == n5) << endl;
+	cout << (n4 == n2) << endl;
 	return 0;
 }
