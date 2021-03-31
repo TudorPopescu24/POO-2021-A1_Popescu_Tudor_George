@@ -33,11 +33,12 @@ int main()
     s.Push('F');
     s.Push('F');
     s.Print();
-    cout << s.Count() << '\n';
+    s.Count();
     s.Push('F');
     s.Push('E');
     s.Push('A');
+    s.Print();
     s.Sort(esteMaiMare);
     s.Print();
-    cout << s.firstIndexOf('F', esteEgal) << '\n';
+    s.firstIndexOf('F', esteEgal);
 }

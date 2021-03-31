@@ -109,6 +109,7 @@ inline void Vector<T>::Insert(T e, int index)
 template<typename T>
 inline void Vector<T>::Sort(bool IsGreater(T, T))
 {
+	std::cout << "Sortam vectorul" << '\n';
 	if (IsGreater == nullptr)
 	{
 		T aux;
@@ -169,6 +170,7 @@ inline const T& Vector<T>::Get(int index)
 template<typename T>
 inline int Vector<T>::Count()
 {
+	std::cout << "Lungimea vectorului este " << count << '\n';
 	return count;
 }
 
@@ -178,12 +180,16 @@ inline int Vector<T>::firstIndexOf(T element, bool IsEqual(T, T))
 	if (IsEqual == nullptr)
 	{
 		for (int i = 0; i < count; i++)
-			if (element == vector[i])
+			if (element == vector[i]) {
+				std::cout << "Primul index al elementului " << element << " este " << i << '\n';
 				return i;
+			}
 		return -1;
 	}
 	for (int i = 0; i < count; i++)
-		if (IsEqual(vector[i], element) == true)
+		if (IsEqual(vector[i], element) == true) {
+			std::cout << "Primul index al elementului " << element << " este " << i << '\n';
 			return i;
+		}
 	return -1;
 }
