@@ -35,6 +35,10 @@ int main() {
 	n2.Print();
 	n3 = "123456";
 	n3.Print();
-	/*n4--;
-	n4.Print(); */
+	n4.Print();
+	--n4;
+	n4.Print();
+	n3.Print();
+	n3--;
+	n3.Print();
 }

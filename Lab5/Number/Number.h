@@ -1,9 +1,9 @@
 #pragma once
 class Number
 {
+public:
 	char* value;
 	int base;
-public:
 	Number(const char* value, int base); // where base is between 2 and 16
 	Number(const Number& n);
 	Number(const int&& n);

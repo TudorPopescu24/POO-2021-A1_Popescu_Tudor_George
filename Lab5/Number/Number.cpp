@@ -136,14 +136,18 @@ bool Number::operator==(const Number& i)
 
 Number& Number::operator--()
 {
-	strcpy(value, value + 1);
+	value = value + 1;
 	return (*this);
 }
 
 Number& Number::operator--(int)
 {
 	Number temp = *this;
-	value[strlen(value) - 1] = NULL;
+	char* aux = new char[100];
+	for (int i = 0; i < strlen(value) - 1; i++)
+		aux[i] = value[i];
+	aux[strlen(value)-1] = NULL;
+	value = aux;
 	return temp;
 
 }
