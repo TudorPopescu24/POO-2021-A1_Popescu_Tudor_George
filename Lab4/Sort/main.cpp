@@ -8,7 +8,7 @@ int main() {
 	int vector[] = { 1,2,3,4,5 };
 	char* string = _strdup("100,200,50,30,1,0");
 	Sort s1(5, 10, 100);
-	Sort s2(5, 70, 100, 500, 20);
+	Sort s2 = { 5, 70, 100, 500, 20 };
 	Sort s3(5, vector);
 	Sort s4(10, 12, 63, 1900, 5, 67, 23, 87, 15, 5, 500);
 	Sort s5(string);
