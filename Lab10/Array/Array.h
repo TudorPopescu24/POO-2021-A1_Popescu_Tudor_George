@@ -159,7 +159,7 @@ public:
 		T aux;
 		for (int i = 0; i < Size - 1; i++)
 			for (int j = 0; j < Size - i - 1; j++) {
-				if (compare(*List[j], *List[j + 1]) > 0) {
+				if (comparator->CompareElements(static_cast<void*>(List[i]), static_cast<void*>(List[i + 1])) > 0) {
 					aux = *List[j];
 					*List[j] = *List[j + 1];
 					*List[j + 1] = aux;
@@ -168,9 +168,63 @@ public:
 	}
 
 	// functii de cautare - returneaza pozitia elementului sau -1 daca nu exista
-	int BinarySearch(const T& elem); // cauta un element folosind binary search in Array
-	int BinarySearch(const T& elem, int(*compare)(const T&, const T&));//  cauta un element folosind binary search si o functie de comparatie
-	int BinarySearch(const T& elem, Compare* comparator);//  cauta un element folosind binary search si un comparator
+
+
+	int BinarySearch(const T& elem) {
+		if (Size == 0 || Capacity == 0)
+			throw "Error: array is empty. [BinarySearch(const T& elem) method]";
+
+		int st = 0, dr = Size - 1;
+		int mij;
+		while (st <= dr)
+		{
+			mij = (st + dr) / 2;
+			if (*List[mij] == elem)
+				return mij;
+			if (*List[mij] < elem)
+				st = mij + 1;
+			else
+				dr = mij - 1;
+		}
+		return -1;
+	}
+
+	int BinarySearch(const T& elem, int(*compare)(const T&, const T&)) {
+		if (Size == 0 || Capacity == 0)
+			throw "Error: array is empty. [BinarySearch(const T& elem) method]";
+
+		int st = 0, dr = Size - 1;
+		int mij;
+		while (st <= dr)
+		{
+			mij = (st + dr) / 2;
+			if (compare(*List[mij], elem) == 0)
+				return mij;
+			if (compare(*List[mij], elem) < 0)
+				st = mij + 1;
+			else
+				dr = mij - 1;
+		}
+		return -1;
+	}
+	int BinarySearch(const T& elem, Compare* comparator) {
+		if (Size == 0 || Capacity == 0)
+			throw "Error: array is empty. [BinarySearch(const T& elem) method]";
+
+		int st = 0, dr = Size - 1;
+		int mij;
+		while (st <= dr)
+		{
+			mij = (st + dr) / 2;
+			if (compare(*List[mij], elem) == 0)
+				return mij;
+			if (compare(*List[mij], elem) < 0)
+				st = mij + 1;
+			else
+				dr = mij - 1;
+		}
+		return -1;
+	}
 
 	int Find(const T& elem); // cauta un element in Array
 	int Find(const T& elem, int(*compare)(const T&, const T&));//  cauta un element folosind o functie de comparatie
